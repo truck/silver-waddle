@@ -58,3 +58,4 @@ function niceprint( string,x,y,c1,c2 )
 	print(string,x,y,c1)
 	print(string,x+1,y,c2)
 end
+

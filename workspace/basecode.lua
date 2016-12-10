@@ -18,13 +18,11 @@ function _init()
 end
 
 function _draw()
-	facebase(0,dude['face'])
---	statusbar()
-
+	cls()
 end
 
 function _update()
-	cls()
+
 end
 
 function getjdir()
