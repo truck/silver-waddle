@@ -5,6 +5,7 @@ function facebase( x,ft )
 	face = unpackface(ft)
 	cl = {14,12,3}
 	cl[0]=6
+	roundhair(x)
 	circfill(x+20,100,20,cl[face['s']])
 	circfill(x+20,130,15,cl[face['s']])
 
@@ -19,6 +20,8 @@ function facebase( x,ft )
 
 	spr(face['e']+28,x+2,104)
 	spr(face['e']+28,x+30,104,1,1,true)
+
+
 
 	-- spr(face['h']+16,x+12,104)
 	-- spr(face['h']+16,x+20,104,1,1,true)
@@ -49,4 +52,13 @@ function randomface()
 	-- flr(rnd(4))*256+ -- hat
 	-- flr(rnd(4))*1024 -- skin
 	return flr(rnd(4096))
+end
+
+function roundhair( x )
+	for i=1,20,3 do
+		r = (7.5+i)*(1/35)
+		x1 = sin(r)*20
+		y1 = cos(r)*20
+		circfill(x+20+x1,100+y1,4,4)
+	end
 end

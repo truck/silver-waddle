@@ -1,6 +1,8 @@
 -- pico-8 game shell
 -- truck
 
+pi = 3.14159265
+
 function _init()
 -- only init srand if we want to have the same results
 --	srand()
