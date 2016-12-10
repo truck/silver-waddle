@@ -9,8 +9,8 @@ function _init()
 	dude = {
 		score = 0,
 		lives = 3,
-		weapon = 0,
-		armor = 0,
+		weapon = 1,
+		armor = 1,
 		name='bob',
 		face=randomface()
 	}
@@ -19,6 +19,7 @@ end
 
 function _draw()
 	cls()
+	statusbar(120)
 	statusbar()
 end
 

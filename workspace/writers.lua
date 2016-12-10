@@ -54,29 +54,48 @@ function texter( string,x,y,w,h,c1,c2 )
 	return string
 end
 
-function niceprint( string,x,y,c1,c2 )
+function niceprint( string,x,y,c1,c2,yinc )
 	print(string,x,y,c1)
-	print(string,x+1,y,c2)
+	print(string,x+1,y+yinc,c2)
 end
 
-function statusbar()
-	rectfill(0,120,128,127,10)
-	rectfill(0,121,128,126,7)
-	rectfill(0,122,128,125,15)
+function statusbar(top)
+	top = top or 0
+
+	rectfill(0,top,128,top+7,10)
+	rectfill(0,top+1,128,top+6,7)
+	rectfill(0,top+2,128,top+5,15)
 -- health
   x = 8
   h = dude['lives']*2
   for i=2,7,2 do
   	if h >= i then
- 			spr(5,x,120)
+ 			spr(5,x,top)
  		else
   		if i-1 == h then
-  			spr(6,x,120)
+  			spr(6,x,top)
 	  	else
-  			spr(7,x,120)
+  			spr(7,x,top)
 	  	end
 	  end
   	x=x+8
   end
 
+  w = {11,12,13}
+  a = {11,14}
+
+  spr(w[dude['weapon']],6*8,top)
+  spr(w[dude['armor']],8*8,top)
+  sc = zpad(dude['score'],6)
+  niceprint(sc,8*12,top+1,1,12,1)
+
+end
+
+function zpad( x,n )
+	s = repeats('0',n) .. x
+	return sub(s,#s-n,n)
+end
+
+function repeats( s,n )
+	return n>0 and s .. repeats(s,n-1) or ""
 end
