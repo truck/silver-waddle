@@ -6,6 +6,7 @@ function _init()
 end
 
 function _draw()
+	border(0,0,15,8)
 	statusbar()
 	--
 end
