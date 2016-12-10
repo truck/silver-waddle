@@ -19,6 +19,7 @@ end
 
 function _draw()
 	cls()
+	statusbar()
 end
 
 function _update()
@@ -54,11 +55,6 @@ function getjdir()
   d = 2
  end
  return d
-end
-
-function statusbar()
--- lame. fix.
-	print("L3 H ***** W:--> ",0,8*16)
 end
 
 function do_intro(  )

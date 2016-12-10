@@ -4,14 +4,14 @@ __lua__
 -- pico-8 game shell
 -- truck
 
-pi = 3.14159265
+cstate = 'intro'
 
 function _init()
 -- only init srand if we want to have the same results
 --	srand()
 	dude = {
 		score = 0,
-		lives = 3,
+		lives = 3.0,
 		weapon = 0,
 		armor = 0,
 		name='bob',
@@ -21,13 +21,26 @@ function _init()
 end
 
 function _draw()
-	facebase(0,dude['face'])
---	statusbar()
-
+	cls()
+	statusbar()
 end
 
 function _update()
-	cls()
+  uf = {
+  ['intro'] = function() do_intro() end,
+  ['help'] = function() do_help() end,
+  ['menu'] = function() do_menu() end,
+  ['move'] = function() do_move() end,
+  ['dlog'] = function() do_dialog() end,
+  ['win'] = function() do_win() end,
+  ['die'] = function() do_die() end}
+
+	if uf[cstate] then
+		uf[cstate]()
+	else
+		do_bug()
+	end
+
 end
 
 function getjdir()
@@ -47,9 +60,29 @@ function getjdir()
  return d
 end
 
-function statusbar()
--- lame. fix.
-	print("l3 h ***** w:--> ",0,8*16)
+function do_intro(  )
+end
+
+function do_help(  )
+end
+
+function do_menu(  )
+end
+
+function do_move(  )
+end
+
+function do_dialog(  )
+end
+
+function do_win(  )
+end
+
+function do_die(  )
+end
+
+function do_bug(  )
+	assert(0==1)
 end
 -- various writer functions
 
@@ -80,10 +113,8 @@ end
 
 function bubblewrite( string,x,y,w,h,c1,c2 )
 	border(x,y,w,h)
-	while #string > 1 do
-		string = texter(string,x+1,y+1,w-1,h-1,c1,c2)
-	end
--- this should be changed so it is part of a display status.
+	string = texter(string,x+1,y+1,w-1,h-1,c1,c2)
+	return string
 end
 
 function texter( string,x,y,w,h,c1,c2 )
@@ -113,17 +144,44 @@ function niceprint( string,x,y,c1,c2 )
 	print(string,x,y,c1)
 	print(string,x+1,y,c2)
 end
+
+function statusbar()
+	rectfill(0,120,128,127,10)
+	rectfill(0,121,128,126,7)
+	rectfill(0,122,128,125,15)
+-- health
+  x = 8
+  h = dude['lives']*2
+  for i=2,7,2 do
+  	if h >= i then
+ 			spr(5,x,120)
+ 		else
+  		if i-1 == h then
+  			spr(6,x,120)
+	  	else
+  			spr(7,x,120)
+	  	end
+	  end
+  	x=x+8
+  end
+
+end
 -- make a face
 
 function facebase( x,ft )
 	x=x or 0
 	face = unpackface(ft)
-	cl = {14,12,3}
-	cl[0]=6
---	roundhair(x)
-	bluehat(x)
-	circfill(x+20,100,20,cl[face['s']])
-	circfill(x+20,130,15,cl[face['s']])
+	cl = {6,14,12,3}
+	fns = {
+	 [1] = function(x) roundhair(x) end,
+	 [2] = function(x) bluehat(x) end,
+	 [3] = function(x) wizardhat(x) end,
+	 [4] = function(x) nothorns(x) end }
+
+	fns[ face['h']+1 ](x)
+
+	circfill(x+20,100,20,cl[face['s']+1])
+	circfill(x+20,130,15,cl[face['s']+1])
 
 	spr(face['m']+16,x+12,104)
 	spr(face['m']+16,x+20,104,1,1,true)
@@ -136,11 +194,6 @@ function facebase( x,ft )
 
 	spr(face['e']+28,x+2,104)
 	spr(face['e']+28,x+30,104,1,1,true)
-
-
-
-	-- spr(face['h']+16,x+12,104)
-	-- spr(face['h']+16,x+20,104,1,1,true)
 
 end
 
@@ -181,17 +234,30 @@ end
 
 function bluehat( x )
 	rectfill(x,77,x+40,80,1)
---	rectfill(x+10,65,x+10,10,1)
+	rectfill(x+10,74,x+30,77,1)
+end
+
+function wizardhat( x )
+	rectfill(x,77,x+40,80,11)
+	for i=-10,10 do
+		line(x+20,60,x+20+i,81,11)
+	end
+end
+
+function nothorns( x )
+	circfill(x+20,80,20,6)
+	circfill(x+10,85,10,0)
+	circfill(x+30,85,10,0)
 end
 __gfx__
-000000000000aaaaaaaaaaaaa999999a0faaaaaa00000000000000000000000000000000ffffffff000000000000000000000000000000000000000000000000
-0000000000aa999999999999a999999afe9999990098082000000000000000000000000077777777000000000000000000000000000000000000000000000000
-000000000a99999999999999a999999aa99999990888888200000000000080000005f500ffffffff000000000000000000000000000000000000000000000000
-000000000a99999999999999a999999aa9999999088888820828222200000000005494d077777777000000000000000000000000000000000000000000000000
-00000000a999999999999999a999999aa999999900888820008888200080002000f949f0ffffffff000000000000000000000000000000000000000000000000
-00000000a999999999999999a999999aa9999999000882000008820000000000005494d077777777000000000000000000000000000000000000000000000000
-00000000a999999999999999a999999afe999999000020000000200000002000000dfd00ffffffff000000000000000000000000000000000000000000000000
-00000000a999999aaaaaaaaaa999999a0faaaaaa0000000000000000000000000000000077777777000000000000000000000000000000000000000000000000
+000000000000aaaaaaaaaaaaa999999a0faaaaaa00000000000000000000000000000000ffffffffaaaaaaaa0000000000000000000000000000000000000000
+0000000000aa999999999999a999999afe9999990098082000000000000000000000000077777777bcbcbcbc0000000000000000000000000000000000000000
+000000000a99999999999999a999999aa99999990888888200000000000080000005f500ffffffff3b3b3b3b0000000000000000000000000000000000000000
+000000000a99999999999999a999999aa9999999088888820828222200000000005494d077777777333333330000000000000000000000000000000000000000
+00000000a999999999999999a999999aa999999900888820008888200080002000f949f0ffffffff131313130000000000000000000000000000000000000000
+00000000a999999999999999a999999aa9999999000882000008820000000000005494d077777777323232320000000000000000000000000000000000000000
+00000000a999999999999999a999999afe999999000020000000200000002000000dfd00ffffffffd1d1d1d10000000000000000000000000000000000000000
+00000000a999999aaaaaaaaaa999999a0faaaaaa0000000000000000000000000000000077777777151515150000000000000000000000000000000000000000
 0000000000000000000000000000000000000009000000000000000000000000000000000000000000000b0b0ccccc00000aaa00000000aa000000000000aa00
 0000000000000000000000000000000000000099000000090000000000000000000050000022220000000000c00000c000aaaaaa00000aaaa0000000a000aa00
 00000000000000000000000000000000000009990000009900000099000000990005500002222220000bbb0bc00555c000aaaaaa00000a0aa000000aa000aaa0

@@ -59,3 +59,24 @@ function niceprint( string,x,y,c1,c2 )
 	print(string,x+1,y,c2)
 end
 
+function statusbar()
+	rectfill(0,120,128,127,10)
+	rectfill(0,121,128,126,7)
+	rectfill(0,122,128,125,15)
+-- health
+  x = 8
+  h = dude['lives']*2
+  for i=2,7,2 do
+  	if h >= i then
+ 			spr(5,x,120)
+ 		else
+  		if i-1 == h then
+  			spr(6,x,120)
+	  	else
+  			spr(7,x,120)
+	  	end
+	  end
+  	x=x+8
+  end
+
+end
