@@ -2,12 +2,11 @@
 
 function facebase( x,ft )
 	x=x or 0
-
-
 	circfill(x+20,100,20,14)
 	circfill(x+20,130,15,14)
-
-
+	face = unpackface(ft)
+	spr(face['m']+16,x+12,104)
+	spr(face['m']+16,x+20,104,1,1,true)
 end
 
 -- return: mouth, nose, eyes, ears, hat, skin
@@ -22,8 +21,8 @@ function unpackface( f )
 	f=f-(i*16)
 	n = flr(f/4)
 	m = f-(n*4)
-	print("m:"..m..",n:"..n..",i:"..i..",e:"..e..",h:"..h..",s:"..s)
-	return({m,n,i,e,h,s})
+--	print("m:"..m..",n:"..n..",i:"..i..",e:"..e..",h:"..h..",s:"..s)
+	return({m=m,n=n,i=i,e=e,h=h,s=s})
 end
 
 function randomface()

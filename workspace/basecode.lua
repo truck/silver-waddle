@@ -16,8 +16,7 @@ function _init()
 end
 
 function _draw()
-	facebase(0)
-	unpackface(dude['face'])
+	facebase(0,dude['face'])
 --	statusbar()
 
 end
