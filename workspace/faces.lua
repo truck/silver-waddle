@@ -3,14 +3,17 @@
 function facebase( x,ft )
 	x=x or 0
 	face = unpackface(ft)
-	cl = {14,12,3}
-	cl[0]=6
---	roundhair(x)
---	bluehat(x)
---	wizardhat(x)
-	nothorns(x)
-	circfill(x+20,100,20,cl[face['s']])
-	circfill(x+20,130,15,cl[face['s']])
+	cl = {6,14,12,3}
+	fns = {
+	 [1] = function(x) roundhair(x) end,
+	 [2] = function(x) bluehat(x) end,
+	 [3] = function(x) wizardhat(x) end,
+	 [4] = function(x) nothorns(x) end }
+
+	fns[ face['h']+1 ](x)
+
+	circfill(x+20,100,20,cl[face['s']+1])
+	circfill(x+20,130,15,cl[face['s']+1])
 
 	spr(face['m']+16,x+12,104)
 	spr(face['m']+16,x+20,104,1,1,true)
@@ -23,11 +26,6 @@ function facebase( x,ft )
 
 	spr(face['e']+28,x+2,104)
 	spr(face['e']+28,x+30,104,1,1,true)
-
-
-
-	-- spr(face['h']+16,x+12,104)
-	-- spr(face['h']+16,x+20,104,1,1,true)
 
 end
 
