@@ -30,7 +30,7 @@ function bubblewrite( string,x,y,w,h,c1,c2 )
 	while #string > 1 do
 		string = texter(string,x+1,y+1,w-1,h-1,c1,c2)
 	end
-	string = texter("#####-----#####",x+1,y+1,w-1,h-1,c1,c2)
+-- this should be changed so it is part of a display status.
 end
 
 function texter( string,x,y,w,h,c1,c2 )
