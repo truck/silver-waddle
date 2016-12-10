@@ -7,7 +7,8 @@ function facebase( x,ft )
 	cl[0]=6
 --	roundhair(x)
 --	bluehat(x)
-	wizardhat(x)
+--	wizardhat(x)
+	nothorns(x)
 	circfill(x+20,100,20,cl[face['s']])
 	circfill(x+20,130,15,cl[face['s']])
 
@@ -75,4 +76,10 @@ function wizardhat( x )
 	for i=-10,10 do
 		line(x+20,60,x+20+i,81,11)
 	end
+end
+
+function nothorns( x )
+	circfill(x+20,80,20,6)
+	circfill(x+10,85,10,0)
+	circfill(x+30,85,10,0)
 end
