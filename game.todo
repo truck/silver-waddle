@@ -10,8 +10,8 @@ LD37 game todo
  ☐ collision detection (map)
  ☐ collision detection (local)
 
- ☐ map (overall)
- ☐ map (local)
+ ☐ map (overall) - maze generator
+ ☐ map (local) - room generator
 
  ☐ save
  ☐ load
@@ -21,3 +21,5 @@ LD37 game todo
  ☐ string - fit-to-space transform
  ✔ border for writing @done (16-12-10 15:03)
  ✔ write within border @done (16-12-10 15:03)
+
+ ☐ character face/body creation
