@@ -3,10 +3,12 @@
 
 function _init()
 	--
+	text="oh. my. god. becky. look at her butt. it is so big! it's like one of those rap guys girlfriends. but. who understands those rap guys anyway. "
+	return text
 end
 
 function _draw()
-	border(0,0,15,8)
+	texter(text,0,0,15,8)
 	statusbar()
 	--
 end
