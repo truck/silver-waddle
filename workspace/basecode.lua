@@ -1,7 +1,7 @@
 -- pico-8 game shell
 -- truck
 
-cstate = 'intro'
+cstate = 'dlog'
 
 function _init()
 -- only init srand if we want to have the same results
@@ -18,8 +18,7 @@ function _init()
 end
 
 function _draw()
-	cls()
-	statusbar(120)
+--	cls()
 	statusbar()
 end
 
@@ -71,6 +70,8 @@ function do_move(  )
 end
 
 function do_dialog(  )
+	cls()
+	dialogbox(1234,true,"omg becky look at her butt it is so big it's like one of those rap guys girlfriends")
 end
 
 function do_win(  )

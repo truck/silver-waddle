@@ -41,7 +41,7 @@ function unpackface( f )
 	f=f-(i*16)
 	n = flr(f/4)
 	m = f-(n*4)
-	print("m:"..m..",n:"..n..",i:"..i..",e:"..e..",h:"..h..",s:"..s,0,40,7)
+--	print("m:"..m..",n:"..n..",i:"..i..",e:"..e..",h:"..h..",s:"..s,0,40,7)
 	return({m=m,n=n,i=i,e=e,h=h,s=s})
 end
 

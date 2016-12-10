@@ -3,6 +3,7 @@
 function border( x,y,w,h )
 	x1=x*8
 	y1=y*8
+	print(x1..':'..y1..":"..w..":"..h,0,10,8)
 	spr(1,x1,y1)
 	spr(1,x1+w*8,y1,1,1,true)
 	spr(1,x1,y1+h*8,1,1,false,true)
@@ -55,6 +56,7 @@ function texter( string,x,y,w,h,c1,c2 )
 end
 
 function niceprint( string,x,y,c1,c2,yinc )
+	yinc = yinc or 0
 	print(string,x,y,c1)
 	print(string,x+1,y+yinc,c2)
 end
