@@ -1,0 +1,23 @@
+LD37 game todo
+
+ ☐ status screen
+ ☐ status bar
+ ☐ dialogue bar
+ ☐ help / start 'full' screen
+ ☐ encounter screen
+
+ ☐ movement
+ ☐ collision detection (map)
+ ☐ collision detection (local)
+
+ ☐ map (overall)
+ ☐ map (local)
+
+ ☐ save
+ ☐ load
+ ☐ restart
+
+ ☐ textwriter - multipage
+ ☐ string - fit-to-space transform
+ ☐ border for writing
+ ☐ write within border
