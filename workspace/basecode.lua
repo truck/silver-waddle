@@ -8,7 +8,7 @@ function _init()
 end
 
 function _draw()
-	texter(text,0,0,15,8)
+	bubblewrite(text,0,0,15,8,6,1)
 	statusbar()
 	--
 end
