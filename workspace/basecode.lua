@@ -2,20 +2,22 @@
 -- truck
 
 function _init()
-	srand()
+-- only init srand if we want to have the same results
+--	srand()
 	dude = {
 		score = 0,
 		lives = 3,
 		weapon = 0,
 		armor = 0,
 		name='bob',
-		face=flr(rnd(16))
+		face=randomface()
 	}
 	return dude
 end
 
 function _draw()
 	facebase(0)
+	unpackface(dude['face'])
 --	statusbar()
 
 end
