@@ -27,25 +27,33 @@ end
 
 function bubblewrite( string,x,y,w,h,c1,c2 )
 	border(x,y,w,h)
-	texter(string,x+1,y+1,w-1,h-1,c1,c2)
+	while #string > 1 do
+		string = texter(string,x+1,y+1,w-1,h-1,c1,c2)
+	end
+	string = texter("#####-----#####",x+1,y+1,w-1,h-1,c1,c2)
 end
 
 function texter( string,x,y,w,h,c1,c2 )
 	x1 = x*8
 	y1 = y*8
 	w = w*2-1
-	h = h*8
+	h = y1+h*7
   s = 0
 
 	for i=1,#string do
-		char = sub(string,i,i)
+		char = sub(string,1,1)
 		niceprint(char,x1+s*4,y1,c1,c2)
 		s=s+1
+		string=sub(string,2,#string)
 		if s>w then
-			y1=y1+8
+			y1=y1+7
 			s=0
 		end
+		if y1 > h then
+			break
+		end
 	end
+	return string
 end
 
 function niceprint( string,x,y,c1,c2 )

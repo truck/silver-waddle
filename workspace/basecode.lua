@@ -3,7 +3,7 @@
 
 function _init()
 	--
-	text="oh. my. god. becky. look at her butt. it is so big! it's like one of those rap guys girlfriends. but. who understands those rap guys anyway. "
+	text="oh. my. god. becky. look at her butt. it is so big! it's like one of those rap guys girlfriends. but. who understands those rap guys anyway. they only talk to her because she looks like a total prostitute. i mean. her butt. it's just, so big. i can't believe it's just so round it's just out there i mean ugh gross. look! she's just so... black!"
 	return text
 end
 
