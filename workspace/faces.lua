@@ -5,7 +5,9 @@ function facebase( x,ft )
 	face = unpackface(ft)
 	cl = {14,12,3}
 	cl[0]=6
-	roundhair(x)
+--	roundhair(x)
+--	bluehat(x)
+	wizardhat(x)
 	circfill(x+20,100,20,cl[face['s']])
 	circfill(x+20,130,15,cl[face['s']])
 
@@ -60,5 +62,17 @@ function roundhair( x )
 		x1 = sin(r)*20
 		y1 = cos(r)*20
 		circfill(x+20+x1,100+y1,4,4)
+	end
+end
+
+function bluehat( x )
+	rectfill(x,77,x+40,80,1)
+	rectfill(x+10,74,x+30,77,1)
+end
+
+function wizardhat( x )
+	rectfill(x,77,x+40,80,11)
+	for i=-10,10 do
+		line(x+20,60,x+20+i,81,11)
 	end
 end
