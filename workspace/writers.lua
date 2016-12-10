@@ -3,7 +3,7 @@
 function border( x,y,w,h )
 	x1=x*8
 	y1=y*8
-	print(x1..':'..y1..":"..w..":"..h,0,10,8)
+
 	spr(1,x1,y1)
 	spr(1,x1+w*8,y1,1,1,true)
 	spr(1,x1,y1+h*8,1,1,false,true)
