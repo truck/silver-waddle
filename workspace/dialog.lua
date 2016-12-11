@@ -8,7 +8,7 @@ function dialogbox( face,left,txt )
 		x = 86
 		bx = 0
 	end
-	w = 8
+	w = 9
 	facebase(x,face)
 	txt = textprep(txt,w)
 --	print(txt,0,10,8)
@@ -20,12 +20,11 @@ function textprep( text,w )
 	str = ''
 	tmp = ''
 	x = 0
-	zz=0
 	w = w*2-1
 	for i=1,#text do
 		ch = sub(text,i,i)
 		if ch == '~' then
-			str = str .. tmp .. repeats('^',w-x-1)
+			str = str .. tmp .. repeats(sp,w-x-1)
 			tmp = ''
 			x = 0
 		else
@@ -37,8 +36,6 @@ function textprep( text,w )
 			end
 			if x == w-1 then
 				str = str .. repeats(sp,#tmp) .. tmp
-				print(x..':'..tmp,0,10+8*zz,9)
-				zz=zz+1
 				x = #tmp
 				tmp = ''
 			end

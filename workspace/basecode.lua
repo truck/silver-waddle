@@ -71,7 +71,7 @@ end
 
 function do_dialog(  )
 	cls()
-	dialogbox(1234,false,"oh. my. god.~becky.~Look at her butt! it is so big it's like one of those rap guys girlfriends")
+	dialogbox(1234,true,"oh. my. god.~becky.~look at her butt! it is so big it's like one of those rap guys girlfriends")
 end
 
 function do_win(  )

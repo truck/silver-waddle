@@ -14,7 +14,7 @@ function _init()
 		lives = 3,
 		weapon = 1,
 		armor = 1,
-		name='bob',
+		name='Dr. One Room, esq.',
 		face=randomface()
 	}
 	return dude
@@ -74,7 +74,7 @@ end
 
 function do_dialog(  )
 	cls()
-	dialogbox(1234,false,"omg becky look at her butt it is so big it's like one of those rap guys girlfriends")
+	dialogbox(1234,false,"oh. my. god.~becky.~Look at her butt! it is so big it's like one of those rap guys girlfriends")
 end
 
 function do_win(  )
@@ -91,7 +91,7 @@ end
 function border( x,y,w,h )
 	x1=x*8
 	y1=y*8
-	print(x1..':'..y1..":"..w..":"..h,0,10,8)
+
 	spr(1,x1,y1)
 	spr(1,x1+w*8,y1,1,1,true)
 	spr(1,x1,y1+h*8,1,1,false,true)
@@ -282,8 +282,40 @@ function dialogbox( face,left,txt )
 		x = 86
 		bx = 0
 	end
+	w = 9
 	facebase(x,face)
-	bubblewrite(txt, bx,10, 9,5, 6,0)
+	txt = textprep(txt,w)
+--	print(txt,0,10,8)
+	bubblewrite(txt, bx,10, w,5, 6,0)
+end
+
+function textprep( text,w )
+	sp = " "
+	str = ''
+	tmp = ''
+	x = 0
+	w = w*2-1
+	for i=1,#text do
+		ch = sub(text,i,i)
+		if ch == '~' then
+			str = str .. tmp .. repeats(sp,w-x-1)
+			tmp = ''
+			x = 0
+		else
+			tmp = tmp..ch
+			x=x+1
+			if ch == sp then
+				str = str .. tmp
+				tmp = ''
+			end
+			if x == w-1 then
+				str = str .. repeats(sp,#tmp) .. tmp
+				x = #tmp
+				tmp = ''
+			end
+		end
+	end
+	return str
 end
 __gfx__
 000000000000aaaaaaaaaaaaa99affff0faaaaaa00000000000000000000000000000000ffffffffaaaaaaaa0000000000000000000000000000000000000000
