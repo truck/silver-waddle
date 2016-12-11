@@ -1,7 +1,7 @@
 -- Dr. One Room on the Island of One Room
 -- truck / Ludum Dare 37 "One Room"
 
-cstate = 'dlog'
+cstate = 'intro'
 
 function _init()
 -- only init srand if we want to have the same results
@@ -13,16 +13,17 @@ function _init()
 		armor = 1,
 		name='Dr. One Room, esq.',
 		face=randomface(),
-		wtf = 77777
 	}
-	dumpbytes(int2bytes(dude.wtf))
+	roompack(1)
+--	roomunpack(1)
+	roomtest(1)
+
 	return dude
 end
 
 function _draw()
 --	cls()
-	statusbar()
-	print()
+--	statusbar()
 
 end
 
