@@ -1,26 +1,30 @@
 -- local map generation from a seed
 
-function roomunpack( s )
+function roomunpack(rn)
 -- 16x16 (256 cells)
--- border
-	for j=1,16 do
-		for i=1,16 do
+	base=0x1000+rn*64
+	for j=0,15 do
+		for i=0,3 do
 			idx = j*16+i
-			cell = sub(s,idx,idx)
-			print(cell,i*4,j*8-8,10)
+			cell = peek(base+idx)
+			cd = unbit4(cell)
+			spr(32+cd[1],i*4,8+j*8)
+			spr(32+cd[2],i*4+1,8+j*8)
+			spr(32+cd[3],i*4+2,8+j*8)
+			spr(32+cd[4],i*4+3,8+j*8)
 		end
 	end
 end
 
-function roompack()
-	r = ''
-	s = '.+|-'
-	for i=1,256 do
-		x=flr(rnd(#s)+1)
-		c = sub(s,x,x)
-		r=r..c
+-- ok we're going to use the shared memory between gfx and map
+-- for the rooms. each room is 64 bytes of data (256 chunks.)
+
+function roompack(rn)
+	base=0x1000+rn*64
+	for i=0,63 do
+		c = bit4(flr(rnd(4)),flr(rnd(4)),flr(rnd(4)),flr(rnd(4)))
+		poke(base+i,c)
 	end
-	return r
 end
 
 -- we can have around 18500 '16' rooms in memory
@@ -35,7 +39,11 @@ function unbit4( byte )
 	return{a,b,c,d}
 end
 
-function int2bytes( x )
+function bit4( a,b,c,d )
+	return a*64+b*16+c*4+d
+end
+
+function string2bytes( x )
 	printh("I the debug:"..x)
   t = {}
   i=1
@@ -50,8 +58,3 @@ function int2bytes( x )
   return t
 end
 
-function dumpbytes( t )
-	for i=1,count(t) do
-		print(t[i],0,8*i,9)
-	end
-end
