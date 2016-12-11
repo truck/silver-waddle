@@ -2,22 +2,21 @@
 
 function roomunpack(rn)
 -- 16x16 (256 cells)
+	cls()
 	base=0x1000+rn*64
---	for j=0,15 do
---		for i=0,3 do
-			j=0
-			i=0
+	for j=0,15 do
+		for i=0,3 do
 			idx = j*16+i
 			cell = peek(base+idx)
-			print("B:"..cell)
+			-- print(base+idx..":B:"..cell)
 			cd = unbit4(cell)
-			debugtable(cd)
-			-- spr(32+cd[1],i*4,8+j*8)
-			-- spr(32+cd[2],i*4+1,8+j*8)
-			-- spr(32+cd[3],i*4+2,8+j*8)
-			-- spr(32+cd[4],i*4+3,8+j*8)
-	-- 	end
-	-- end
+--			debugtable(cd)
+			spr(32+cd[1],i*4,8+j*8)
+			spr(32+cd[2],i*4+1,8+j*8)
+			spr(32+cd[3],i*4+2,8+j*8)
+			spr(32+cd[4],i*4+3,8+j*8)
+		end
+	end
 end
 
 function roomtest( rn )
@@ -36,11 +35,11 @@ end
 
 function roompack(rn)
 	base=0x1000+rn*64
-	for i=0,3 do
+	for i=0,63 do
 		c = bit4(flr(rnd(4)),flr(rnd(4)),flr(rnd(4)),flr(rnd(4)))
-		color(2)
-		print(c)
-		color(6)
+		-- color(2)
+		-- print(c)
+		-- color(6)
 		poke(base+i,c)
 	end
 end
@@ -50,13 +49,12 @@ end
 -- there are 256^4 (4294967296) possibilities
 
 function unbit4( x )
-	print("byte:"..x)
+	-- print("byte:"..x)
 	a=band(x,192)/64
 	b=band(x,48)/16
 	c=band(x,12)/4
 	d=band(x,3)
 	t={a,b,c,d}
-	debugtable(t)
 	return t
 end
 
