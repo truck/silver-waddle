@@ -20,18 +20,6 @@ function roomunpack(rn)
 		end
 	end
 end
-
-function roomtest( rn )
-	base=0x1000+rn*64
---	cls()
-	x = peek(base)
-	x1 = unbit4(x)
-	debugtable(x1)
-	-- for i=1,4 do
-	-- 	print(x1[i])
-	-- end
-end
-
 -- ok we're going to use the shared memory between gfx and map
 -- for the rooms. each room is 64 bytes of data (256 chunks.)
 
@@ -62,21 +50,6 @@ end
 
 function bit4( a,b,c,d )
 	return a*64+b*16+c*4+d
-end
-
-function string2bytes( x )
-	printh("I the debug:"..x)
-  t = {}
-  i=1
-  while x>256 do
-    t[i] = flr(x/256)
-    x = x-t[i]*256
-    i=i+1
-    printh("..."..t[i])
-  end
-  t[i]=x
-  printh(t[i])
-  return t
 end
 
 function debugtable( t )
