@@ -16,7 +16,6 @@ function _init()
 	}
 	roompack(1)
 	roomunpack(1)
---	roomtest(1)
 
 	return dude
 end
