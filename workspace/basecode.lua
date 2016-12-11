@@ -1,5 +1,5 @@
--- pico-8 game shell
--- truck
+-- Dr. One Room on the Island of One Room
+-- truck / Ludum Dare 37 "One Room"
 
 cstate = 'dlog'
 
@@ -13,15 +13,17 @@ function _init()
 		armor = 1,
 		name='Dr. One Room, esq.',
 		face=randomface(),
-		room=roompack()
+		wtf = 77777
 	}
+	dumpbytes(int2bytes(dude.wtf))
 	return dude
 end
 
 function _draw()
 --	cls()
---	statusbar()
-	roomunpack(dude['room'])
+	statusbar()
+	print()
+
 end
 
 function _update()
@@ -73,8 +75,7 @@ end
 
 function do_dialog(  )
 	cls()
---	dialogbox(1234,true,"oh. my. god.~becky.~look at her butt! it is so big it's like one of those rap guys girlfriends")
-
+	dialogbox(dude.face,true,"oh. my. god.~becky.~look at her butt! it is so big it's like one of those rap guys girlfriends")
 end
 
 function do_win(  )
