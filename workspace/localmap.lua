@@ -6,15 +6,17 @@ function roomunpack(rn)
 	base=0x1000+rn*64
 	for j=0,15 do
 		for i=0,3 do
-			idx = j*16+i
+			idx = j*4+i
 			cell = peek(base+idx)
 			-- print(base+idx..":B:"..cell)
 			cd = unbit4(cell)
 --			debugtable(cd)
-			spr(32+cd[1],i*4,8+j*8)
-			spr(32+cd[2],i*4+1,8+j*8)
-			spr(32+cd[3],i*4+2,8+j*8)
-			spr(32+cd[4],i*4+3,8+j*8)
+			x=i*32
+			y=j*8
+			spr(32+cd[1],x,y)
+			spr(32+cd[2],x+8,y)
+			spr(32+cd[3],x+16,y)
+			spr(32+cd[4],x+24,y)
 		end
 	end
 end
