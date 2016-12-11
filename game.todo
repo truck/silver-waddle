@@ -12,6 +12,7 @@ LD37 game todo
 
  ☐ map (overall) - maze generator
  ☐ map (local) - room generator
+ ☐ map unpack
 
  ☐ save
  ☐ load

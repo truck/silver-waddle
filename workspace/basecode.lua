@@ -12,7 +12,8 @@ function _init()
 		weapon = 1,
 		armor = 1,
 		name='Dr. One Room, esq.',
-		face=randomface()
+		face=randomface(),
+		room=roompack()
 	}
 	return dude
 end
@@ -72,6 +73,7 @@ end
 function do_dialog(  )
 	cls()
 	dialogbox(1234,true,"oh. my. god.~becky.~look at her butt! it is so big it's like one of those rap guys girlfriends")
+	print(dude['room'],0,10,8)
 end
 
 function do_win(  )
