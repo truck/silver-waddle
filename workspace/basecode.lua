@@ -20,7 +20,8 @@ end
 
 function _draw()
 --	cls()
-	statusbar()
+--	statusbar()
+	roomunpack(dude['room'])
 end
 
 function _update()
@@ -72,8 +73,8 @@ end
 
 function do_dialog(  )
 	cls()
-	dialogbox(1234,true,"oh. my. god.~becky.~look at her butt! it is so big it's like one of those rap guys girlfriends")
-	print(dude['room'],0,10,8)
+--	dialogbox(1234,true,"oh. my. god.~becky.~look at her butt! it is so big it's like one of those rap guys girlfriends")
+
 end
 
 function do_win(  )
