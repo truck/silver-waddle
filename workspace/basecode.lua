@@ -15,8 +15,8 @@ function _init()
 		face=randomface(),
 	}
 	roompack(1)
---	roomunpack(1)
-	roomtest(1)
+	roomunpack(1)
+--	roomtest(1)
 
 	return dude
 end
