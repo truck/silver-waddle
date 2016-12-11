@@ -2,7 +2,7 @@ LD37 game todo
 
  ☐ status screen
  ✔ status bar @done (16-12-10 23:18)
- ☐ dialogue bar
+ ✔ dialogue bar @done (16-12-11 03:17)
  ☐ help / start 'full' screen
  ☐ encounter screen
 
@@ -18,7 +18,7 @@ LD37 game todo
  ☐ restart
 
  ☐ textwriter - multipage
- ☐ string - fit-to-space transform
+ ✔ string - fit-to-space transform @done (16-12-11 03:16)
  ✔ border for writing @done (16-12-10 15:03)
  ✔ write within border @done (16-12-10 15:03)
 

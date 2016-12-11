@@ -184,3 +184,5 @@ luac.out
 *.wp*
 
 *.sublime-*
+
+/tmp.p8
