@@ -14,7 +14,9 @@ function _init()
 		name='Dr. One Room, esq.',
 		face=randomface(),
 	}
-	roompack(1)
+	for i=0,15 do
+		roompack(i)
+	end
 	roomunpack(1)
 
 	return dude
@@ -22,8 +24,11 @@ end
 
 function _draw()
 --	cls()
---	statusbar()
 
+	x=flr(rnd(15))
+	roomunpack(x)
+	statusbar()
+	dialogbox(dude.face,true,"oh. my. god.~becky.~look at her butt! it is so big it's like one of those rap guys girlfriends")
 end
 
 function _update()
@@ -62,6 +67,9 @@ function getjdir()
 end
 
 function do_intro(  )
+	cls()
+	x=flr(rnd(15))
+	roomunpack(x)
 end
 
 function do_help(  )
@@ -75,6 +83,7 @@ end
 
 function do_dialog(  )
 	cls()
+
 	dialogbox(dude.face,true,"oh. my. god.~becky.~look at her butt! it is so big it's like one of those rap guys girlfriends")
 end
 
