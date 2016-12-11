@@ -25,4 +25,12 @@ end
 
 -- we can have around 18500 '16' rooms in memory
 -- so over 1000 rooms at 16x16
--- and since there are, you know, only 1024 um hold on there are 1024
+-- there are 256^4 (4294967296) possibilities
+
+function unbit4( byte )
+	a=band(x,192)/64
+	b=band(x,48)/16
+	c=band(x,12)/4
+	d=band(x,3)
+	return{a,b,c,d}
+end
